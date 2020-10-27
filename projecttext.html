@@ -1,0 +1,124 @@
+<!doctype>
+<html>
+<head><title>functions</title>
+    <style type="text/css">
+.top {
+  position: fixed; 
+  top: 0; 
+  left: 0; 
+  min-width: 100%; 
+  min-height: 100%;
+}
+        
+    .top {
+  position: fixed; 
+  top: -50%; 
+  left: -50%; 
+  width: 200%; 
+  height: 200%;
+}
+.top img {
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  right: 0; 
+  bottom: 0; 
+  margin: auto; 
+  min-width: 50%;
+  min-height: 50%;
+}
+   
+     
+        #tex1{
+            position: relative;
+           float: right;
+            color: white;
+            font-weight: 700;
+            font-size: 50px;
+            right:150px;
+            
+        }
+         #tex2{
+            position: relative;
+            float: right;
+            color: white;
+            font-weight: 400;
+            font-size: 30px;
+             top:100px;
+             left:300px;    
+                   }
+        #tex3{
+            position: relative;
+            float: right;
+            color: white;
+            font-weight: 300;
+            font-size: 30px;
+            left:400px;
+            top:150px;
+        }
+        
+        #shape{
+       position: relative;
+            display: none;
+            width:50px;
+            height:50px;
+            
+            background-color:mediumvioletred;
+            
+                  }
+          <meta charset="utf-8" />
+    <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    </style>
+           </head>
+<body>
+<div class="top"><img src="projecttest.png"></div>
+    <p id="tex1">TEST YOUR REACTIONS</p>
+    <p id="tex2">Click The boxes as quickly as you can</p>
+    <p id="tex3">Time:<span id="tes4"></span></p>
+    <p id="shape" ></p>
+    <script type="text/javascript">
+    var start=new Date().getTime();
+        function getRandomColor() {
+  var letters = '0123456789ABCDEF';
+  var color = '#';
+  for (var i = 0; i < 6; i++) {
+    color += letters[Math.floor(Math.random() * 16)];
+  }
+  return color;
+}
+    function shapeappear(){
+        var top=Math.random() *400;
+        var left=Math.random() *400;
+        var width=(Math.random() *200)+100;
+        if(Math.random()>0.5)
+            {
+                document.getElementById("shape").style.borderRadius="50%";
+            }
+        else
+        {
+            document.getElementById("shape").style.borderRadius="0";
+        }
+        document.getElementById("shape").style.backgroundColor=getRandomColor();
+        document.getElementById("shape").style.top=top+"px";
+        document.getElementById("shape").style.width=width+"px";
+        document.getElementById("shape").style.height=width+"px";
+        document.getElementById("shape").style.left=left+"px";
+        document.getElementById("shape").style.display="block";
+        start=new Date().getTime();
+        }
+    function afterdelay() {
+    setTimeout(shapeappear,Math.random() *2000);    
+    }
+    afterdelay();
+        document.getElementById("shape").onclick =function(){
+                document.getElementById("shape").style.display="none";
+             var end=new Date().getTime();
+            var timetaken=((end-start)/1000);
+            document.getElementById("tes4").innerHTML=timetaken+"s";
+    afterdelay();
+        }
+    </script>
+    </body>
+</html>
